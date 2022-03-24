@@ -46,6 +46,7 @@ for i in range(2, nrows+1):
             time.sleep(5)
             driver.find_element(By.XPATH, xpath).click()
             print("Clicked Successfully")
+            time.sleep(3)
             sheet_obj.cell(row=i, column=6).value = "PASS"
         except Exception:
             print("Unable to Click")
@@ -83,5 +84,8 @@ for i in range(2, nrows+1):
             sheet_obj.cell(row=i, column=6).value = "FAIL"
 
 
-## full path causes permissions error but can't save results without it
+
 wb_obj.save("C:/Users/crenauro/Documents/selenium_training/testdata1.xlsx")
+
+time.sleep(3)
+driver.save_screenshot("C:/Users/crenauro/Documents/selenium_training/form.png")
