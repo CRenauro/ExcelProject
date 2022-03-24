@@ -67,7 +67,20 @@ for i in range(2, nrows+1):
             print("Unable to Enter Data")
             sheet_obj.cell(row=i, column=6).value = "FAIL"
 
+    if action_type == "autocomplete":
+        try:
+            print(xpath)
+            element = driver.find_element(By.XPATH, xpath)
+            element.send_keys(text)
+            element.send_keys(Keys.ARROW_DOWN)
+            element.send_keys(Keys.ENTER)
+            time.sleep(3)
+            print("Entered Data")
+            sheet_obj.cell(row=i, column=6).value = "PASS"
 
+        except Exception:
+            print("Unable to Enter Data")
+            sheet_obj.cell(row=i, column=6).value = "FAIL"
 
 
 ## full path causes permissions error but can't save results without it
